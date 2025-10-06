@@ -43,15 +43,16 @@ $categoriaFilter = trim($_GET['categoria'] ?? '');
 $tema = trim($_GET['tema'] ?? 'claro');
 
 $categories = array_values(array_unique(array_map(function ($it) {
-    return $it['categoria'];}, $items)));
+    return $it['categoria'];
+}, $items)));
 sort($categories);
 
 $filtered = array_filter($items, function ($it) use ($q, $categoriaFilter) {
-    if ($q !== '' && stripos($it['title'], $q) === false) 
-    return false;
-    if ($categoriaFilter !== '' && strtolower($categoriaFilter) !== 'todas') {
-        if (strcasecmp($it['categoria'], $categoriaFilter) !== 0) 
+    if ($q !== '' && stripos($it['title'], $q) === false)
         return false;
+    if ($categoriaFilter !== '' && strtolower($categoriaFilter) !== 'todas') {
+        if (strcasecmp($it['categoria'], $categoriaFilter) !== 0)
+            return false;
     }
     return true;
 });
@@ -60,7 +61,7 @@ $filtered = array_filter($items, function ($it) use ($q, $categoriaFilter) {
 $totalItems = count($items);
 $resultsCount = count($filtered);
 
-include_once ("header.php");
-include_once ("main.php");
-include_once ("footer.php");
+include_once("header.php");
+include_once("main.php");
+include_once("footer.php");
 ?>
