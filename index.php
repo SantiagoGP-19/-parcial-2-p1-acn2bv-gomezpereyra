@@ -3,6 +3,8 @@
 include_once("albums.php");
 include_once("funciones.php");
 
+
+
 $errors = [];
 $success = null;
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
