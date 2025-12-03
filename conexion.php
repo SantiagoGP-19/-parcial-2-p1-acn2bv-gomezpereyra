@@ -21,6 +21,12 @@ class Conexion {
         }
     }
 
+    public function insertar($sql, $params = []) {
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute($params);
+    return $this->pdo->lastInsertId();
+}
+
     public function consultar($sql) {
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
@@ -32,5 +38,6 @@ class Conexion {
         $stmt->execute();
         return $this->pdo->lastInsertId();
     }
+
 }
 ?>

@@ -37,7 +37,7 @@ include_once("conexion.php");
         <div class="form-grid">
             <div>
                 <label for="title">Título *</label>
-                <input id="title" name="title" type="text" value="<?= esc($_POST['title'] ?? ''); ?>">
+                <input id="title" name="title" type="text" value="<?= esc($_POST['title'] ?? ''); ?>" required>
                 <?php if (!empty($errors['title'])): ?><span class="error"><?= esc($errors['title']); ?></span><?php endif; ?>
             </div>
             <div>
@@ -49,7 +49,7 @@ include_once("conexion.php");
         <div class="form-grid" style="margin-top: 10px;">
             <div>
                 <label for="categoriaNueva">Categoría *</label>
-                <input id="categoriaNueva" name="categoria" type="text" value="<?= esc($_POST['categoria'] ?? ''); ?>">
+                <input id="categoriaNueva" name="categoria" type="text" value="<?= esc($_POST['categoria'] ?? ''); ?>" required>
                 <?php if (!empty($errors['categoria'])): ?><span class="error"><?= esc($errors['categoria']); ?></span><?php endif; ?>
             </div>
             <div>
@@ -60,7 +60,7 @@ include_once("conexion.php");
 
         <div class="form-field">
             <label for="descripcion">Descripción *</label>
-            <textarea id="descripcion" name="descripcion" rows="3"><?= esc($_POST['descripcion'] ?? ''); ?></textarea>
+            <textarea id="descripcion" name="descripcion" rows="3" required><?= esc($_POST['descripcion'] ?? ''); ?></textarea>
             <?php if (!empty($errors['descripcion'])): ?><span class="error"><?= esc($errors['descripcion']); ?></span><?php endif; ?>
         </div>
 
