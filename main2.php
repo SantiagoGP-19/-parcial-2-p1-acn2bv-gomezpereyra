@@ -21,6 +21,10 @@ include_once("conexion.php");
                     <h3><?= esc($it['title']); ?></h3>
                     <p class="desc"><?= esc($it['descripcion']); ?></p>
                 </div>
+                <div class="card-actions">
+                    <button class="btn-edit" data-id="<?= esc($it['id']); ?>">Editar</button>
+                    <button class="btn-delete" data-id="<?= esc($it['id']); ?>">Eliminar</button>
+                </div>
             </article>
         <?php endforeach; ?>
     <?php endif; ?>
@@ -33,7 +37,7 @@ include_once("conexion.php");
         <p class="ok">Gracias — recibimos tu sugerencia: <strong><?= esc($success['title']); ?></strong></p>
     <?php endif; ?>
 
-    <form id="form-sugerir" method="post" action="?tema=<?= esc($tema); ?>">
+    <form id="form-sugerir" method="post" action="agregar.php">
         <div class="form-grid">
             <div>
                 <label for="title">Título *</label>

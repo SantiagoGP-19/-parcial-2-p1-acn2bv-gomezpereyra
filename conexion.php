@@ -5,7 +5,7 @@ class Conexion {
     private $user = "root";
     private $password = "";
     private $charset = "utf8mb4";
-    private $pdo;
+    public $pdo;
 
     public function __construct() {
         try {

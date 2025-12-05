@@ -8,53 +8,6 @@ $success = null;
 
 $db = new Conexion();
 
-$errors = [];
-$success = null;
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $title = trim($_POST['title'] ?? '');
-    $artist = trim($_POST['artist'] ?? '');
-    $categoria = trim($_POST['categoria'] ?? '');
-    $descripcion = trim($_POST['descripcion'] ?? '');
-    $imagen = trim($_POST['imagen'] ?? '');
-    $anio = !empty($_POST['anio']) ? $_POST['anio'] : date('Y');
-
-    if ($title === '') {
-        $errors['title'] = 'El título es obligatorio.';
-    }
-    if ($categoria === '') {
-        $errors['categoria'] = 'La categoría es obligatoria.';
-    }
-    if ($descripcion === '') {
-        $errors['descripcion'] = 'La descripción es obligatoria.';
-    }
-    if (empty($imagen)) {
-        $imagen = 'https://picsum.photos/seed/default/400/250';
-    }
-
-if (empty($errors)) {
-        $anio = date('Y');
-        
-        $t = addslashes($title);
-        $a = addslashes($artist);
-        $c = addslashes($categoria);
-        $d = addslashes($descripcion);
-        $u = addslashes($imagen);
-        $y = (int)$anio;
-
-$sqlInsert = "INSERT INTO albuns (titulo, artista, categoria, descripcion, url, anio) VALUES (?, ?, ?, ?, ?, ?)";
-try {
-    $db->insertar($sqlInsert, [$title, $artist, $categoria, $descripcion, $imagen, $anio]);
-    
-    $success = [
-        'title' => $title,
-        'categoria' => $categoria
-    ];
-} catch (Exception $e) {
-    $errors['db'] = 'Error al guardar en la base de datos.';
-}
-    }
-}
-
 $sqlGet = "SELECT Id as id, titulo as title, artista as artist, categoria, descripcion, url as imagen, anio FROM albuns";
 $items = $db->consultar($sqlGet);
 
